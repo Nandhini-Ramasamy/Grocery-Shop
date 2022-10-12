@@ -1,3 +1,66 @@
-<p>
-  admin-products works!
-</p>
+<!--<button><a routerLink="/admin/products/new">New Product</a></button>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>Spinach</td>
+    <td>$3.00</td>
+    <a routerLink="/admin/products/new">Edit</a>
+  </tr>
+</table>
+
+
+-->
+<button class="btn btn-primary" routerLink="/admin/products/new">New Product</button>
+<br>
+<label for="search" style="font-weight: Bold; font-family: 'Times New Roman', Times, serif;font-size:16px">Search</label>
+<input #search (keyup)="searchtitle(search.value)" type="text" class="form-control">
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let p of filteredproducts">
+    <td>{{ p.title }}</td>
+    <td>{{ p.price }}</td>
+    <td><a [routerLink]="['/admin/products/',p.$key]">Edit</a></td>
+  </tr>
+</table>
+
+<!--<data-table
+[items]= "item"
+[itemCount]="itemCount"
+(reload)="reloadItems($event)"
+>
+    <data-table-column
+    [property]="'title'"
+    [header]="'Title'"
+    [sortable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+    [property]="'price'"
+    [header]="'Price'"
+    [sortable]="true"
+    >
+    <ng-template #dataTablecell let-item = "item">
+      {{ item.price | currency : 'USD':'true'}}
+    </ng-template>
+
+    </data-table-column>
+
+    <data-table-column
+    [property]="'$key'"
+    >
+    <ng-template #dataTablecell let-item = "item">
+      <a [routerLink]="['/admin/products/',item.$key]">Edit</a>
+    </ng-template>
+    </data-table-column>
+</data-table>
+-->

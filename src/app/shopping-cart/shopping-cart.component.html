@@ -1,3 +1,39 @@
-<p>
-  shopping-cart works!
-</p>
+<h1>Shopping Cart Page</h1>
+<div class = "row col-11" *ngIf = "cart$ | async as cart">
+  <p>You have {{cart.totalItemsCount}} items in your cart</p>
+  <div class="render"></div>
+    <button
+    *ngIf = "cart.items.length"
+    (click)="clearCart()"
+    class="btn btn-secondary btn-sm">Clear Shopping Cart
+  </button>
+  
+  <table class="table">
+    <thead>
+      <th></th>
+      <th>Product</th>
+      <th style="width:240px">Quantity</th>
+      <th class= "text-right" style="width:200px">Price</th>
+    </thead>
+    <tbody>
+    <tr *ngFor = "let item of cart.items">
+      <td>
+        <div [style.backgroundImage] = "'url('+item.imageUrl+')'" class="thumbnail"></div>
+      </td>
+      <td>{{item.title}}</td>
+      <td><product-quantity [product]="item" [shopping-cart]="cart"></product-quantity></td>
+      <td class= "text-right">{{ item.quantity * price | currency:'USD':true }}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th class= "text-right">{{ cart.totalPrice | currency:'USD':true }}</th>
+    </tfoot>
+  </table>
+  <button
+  *ngIf = "cart.items.length"
+  routerLink="/check-out"
+  class="btn btn-primary btn-sm">Check Out</button>
+</div>

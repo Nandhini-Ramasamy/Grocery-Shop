@@ -1,0 +1,13 @@
+.thumbnail{
+    width:90px;
+    height:90px;
+    border-radius:100%;
+    background-size: cover;
+}
+.btn.btn-secondary.btn-sm{
+    padding-right: 10px;
+    height: 30px;
+}
+.render{
+    width:600px;
+}
